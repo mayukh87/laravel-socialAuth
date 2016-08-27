@@ -20,7 +20,8 @@
         "phpmd/phpmd": "~2.2",
         "squizlabs/php_codesniffer": "*",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "aws/aws-sdk-php-laravel": "~3.0"
+        "aws/aws-sdk-php-laravel": "~3.0",
+	"facebook/php-sdk-v4" : "4.0.*"
     },
     "autoload": {
         "classmap": [
