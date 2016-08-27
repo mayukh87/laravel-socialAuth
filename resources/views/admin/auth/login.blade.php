@@ -43,8 +43,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
-
-                                <a class="btn btn-link" href="{{ url('admin/password/email') }}">Forgot Your Password?</a>
+                                <a class="btn btn-link" href="/admin/redirect">FB Login</a>
                             </div>
                         </div>
                     </form>
