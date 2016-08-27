@@ -33,4 +33,9 @@ make putconfigs
 php artisan migrate
 ```
 
+* Command for creating migration table
+```
+php artisan make:migration migration_name --create="table_name"
+```
+
 **Note :** *No configurating file should not be kept in repo.*
