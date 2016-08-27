@@ -1,0 +1,7 @@
+/nbproject
+/vendor
+.env
+.DS_Store
+nbproject/
+config/
+.project
