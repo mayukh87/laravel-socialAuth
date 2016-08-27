@@ -16,3 +16,5 @@ Route::get('/admin/home', 'APP\Admin\HomeController@home');
 
 Route::get('/admin/redirect', 'APP\Admin\SocialAuthController@redirect');
 Route::get('/admin/callback', 'APP\Admin\SocialAuthController@callback');
+
+Route::get('/user/login/callback', 'APP\Admin\SocialAuthController@fbSignUp');

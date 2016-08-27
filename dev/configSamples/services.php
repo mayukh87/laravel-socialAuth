@@ -36,8 +36,8 @@ return [
     ],
     
     'facebook' => [
-        'client_id' => env('FACEBOOK_APP_ID'),
-        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'client_id' => env('FB_APP_ID'),
+        'client_secret' => env('FB_APP_SECRET'),
         'redirect' => 'http://laravel-social.dev/admin/callback',
     ],
 
