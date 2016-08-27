@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\APP\Admin;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
 class SocialAuthController extends Controller
@@ -15,6 +14,6 @@ class SocialAuthController extends Controller
 
     public function callback()
     {
-        // when facebook call us a with token
+        $providerUser = \Socialite::driver('facebook')->user();
     }
 }
