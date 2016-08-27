@@ -28,14 +28,26 @@ make vendor
 make putconfigs
 ```
 
+### Frequently used artisan commands
+
 * Create user's, password reset table.
 ```
 php artisan migrate
 ```
 
-* Command for creating migration table
+* Creating migration table.
 ```
 php artisan make:migration migration_name --create="table_name"
+```
+
+* Create model with artisan
+```
+php artisan make:model ModelName
+```
+
+* Refresh migration if new fields are added.
+```
+php artisan migrate:refresh
 ```
 
 **Note :** *No configurating file should not be kept in repo.*
