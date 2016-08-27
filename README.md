@@ -33,4 +33,4 @@ make putconfigs
 php artisan migrate
 ```
 
-### No configurating file should not be kept in repo.
+**Note :** *No configurating file should not be kept in repo.*
