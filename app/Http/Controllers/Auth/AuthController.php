@@ -7,20 +7,11 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
@@ -75,11 +66,6 @@ class AuthController extends Controller
     {
         return view('admin.auth.login');
     }
-    
-    public function postLogin(\Illuminate\Http\Request $request)
-    {
-        parent::postLogin($request);
-    }
 
     public function showRegistrationForm()
     {
@@ -90,9 +76,23 @@ class AuthController extends Controller
     {
         return redirect('/admin/home');
     }
-
-    public function getLogout()
+    
+    public function redirectToProvider($provider)
     {
-        parent::getLogout();
+        return Socialite::driver($provider)->redirect();
+    }
+    
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+ 
+        $data = [
+            'name' => $user->getName(),
+            'email' => $user->getEmail()
+        ];
+
+        Auth::login(User::firstOrCreate($data));
+
+        return redirect('/admin/home');
     }
 }

@@ -14,7 +14,8 @@ Route::get('/admin/register', 'Auth\AuthController@showRegistrationForm');
 Route::post('/admin/register', 'Auth\AuthController@register');
 Route::get('/admin/home', 'APP\Admin\HomeController@home');
 
-Route::get('/admin/redirect', 'APP\Admin\SocialAuthController@redirect');
-Route::get('/admin/callback', 'APP\Admin\SocialAuthController@callback');
-
+Route::get('/user/facebook/login', 'APP\Admin\SocialAuthController@facebookLogin');
 Route::get('/user/login/callback', 'APP\Admin\SocialAuthController@fbSignUp');
+
+Route::get('/social/login/redirect/{provider}', 'Auth\AuthController@redirectToProvider');
+Route::get('/social/login/{provider}', 'Auth\AuthController@handleProviderCallback');

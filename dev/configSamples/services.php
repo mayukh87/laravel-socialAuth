@@ -40,5 +40,11 @@ return [
         'client_secret' => env('FB_APP_SECRET'),
         'redirect' => 'http://laravel-social.dev/admin/callback',
     ],
+    
+    'google' => [
+        'client_id' =>  env('GOOGLE_APP_ID'),
+        'client_secret' => env('GOOGLE_APP_SECRET'),
+        'redirect' => 'http://laravel-social.dev/admin/home',
+    ]
 
 ];
