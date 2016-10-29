@@ -53,10 +53,16 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i> Register
                                 </button>
+                                <a class="btn btn-primary" href="/social/login/redirect/facebook">
+                                    <i class="fa fa-btn fa-facebook"></i>Regiser with Facebook
+                                </a>
+                                <a class="btn btn-primary" href="/social/login/redirect/google">
+                                    <i class="fa fa-btn fa-google"></i>Register with Google
+                                </a>
                             </div>
                         </div>
                     </form>
