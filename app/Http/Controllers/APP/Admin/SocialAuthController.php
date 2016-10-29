@@ -10,7 +10,7 @@ use Facebook\FacebookRequestException;
 use Facebook\GraphUser;
 use App\Http\Controllers\Controller;
 use App\User;
-session_start();
+
 class SocialAuthController extends Controller {
     
     private $appID;

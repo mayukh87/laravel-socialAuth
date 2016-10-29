@@ -10,9 +10,10 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
-{
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+class AuthController extends Controller {
+
+    use AuthenticatesAndRegistersUsers,
+        ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
@@ -27,8 +28,7 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
@@ -38,12 +38,10 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+                    'email' => 'required|email|max:255|unique:users',
+                    'password' => 'required|min:6|confirmed',
         ]);
     }
 
@@ -53,39 +51,48 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
         ]);
     }
-    
-    public function getLoginForm()
-    {
+
+    public function getLoginForm() {
         return view('admin.auth.login');
     }
 
-    public function showRegistrationForm()
-    {
+    public function showRegistrationForm() {
         return view('admin.auth.register');
     }
-    
-    public function postRegister()
-    {
+
+    public function register(\Illuminate\Http\Request $request) {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                    $request, $validator
+            );
+        }
+
+        // Removed to prevent auto login
+        Auth::guard($this->getGuard())->login($this->create($request->all()));
+        $this->create($request->all());
+
+        return redirect($this->redirectPath());
+    }
+
+    public function postRegister() {
         return redirect('/admin/home');
     }
-    
-    public function redirectToProvider($provider)
-    {
+
+    public function redirectToProvider($provider) {
         return Socialite::driver($provider)->redirect();
     }
-    
-    public function handleProviderCallback($provider)
-    {
+
+    public function handleProviderCallback($provider) {
         $user = Socialite::driver($provider)->user();
- 
+
         $data = [
             'name' => $user->getName(),
             'email' => $user->getEmail()
@@ -95,4 +102,5 @@ class AuthController extends Controller
 
         return redirect('/admin/home');
     }
+
 }

@@ -44,7 +44,7 @@
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
                                 <a class="btn btn-primary" href="/social/login/redirect/facebook">
-                                    <i class="fa fa-btn fa-facebook-official"></i>Facebook Login
+                                    <i class="fa fa-btn fa-facebook"></i>Facebook Login
                                 </a>
                                 <a class="btn btn-primary" href="/social/login/redirect/google">
                                     <i class="fa fa-btn fa-google"></i>Google Login

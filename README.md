@@ -23,12 +23,12 @@ sudo vim /etc/hosts
 make vendor
 ```
 
-* Put your application based config files, accordingly modify the env and config files.
+* Put your application specific config files, accordingly modify the env and config files.
 ```
 make putconfigs
 ```
 
-### Frequently used artisan commands
+### Frequently used commands
 
 * Create user's, password reset table.
 ```
@@ -50,4 +50,4 @@ php artisan make:model ModelName
 php artisan migrate:refresh
 ```
 
-**Note :** *No configurating file should not be kept in repo.*
+**Note :** *No configurating file should be kept in repo.*
